@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Instalação do MicroPython na AmadoBoard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        padding: 0;
+        margin: 0;
+        line-height: 1.6;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      .content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .header img {
+        max-width: 200px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 2em;
+        color: #0066cc;
+      }
+      p {
+        text-align: center;
+      }
+      .videoWrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        margin: 40px 0;
+      }
+      .videoWrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .install-button {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+      .install-button esp-web-install-button {
+        font-size: 1.2em;
+      }
+      .footer {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #666;
+      }
+    </style>
+    <script type="module">
+      import "https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module";
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="header">
+        <img src="https://raw.githubusercontent.com/joaodrj/arquivos/main/LOGO_AMADOMAKER_PNG.png" alt="Logo da AmadoMaker" />
+      </div>
+      
+      <h1>Instalação do MicroPython na AmadoBoard</h1>
+
+      <p>
+        Esta página permite instalar o MicroPython em sua placa AmadoBoard de maneira fácil e rápida. Basta conectar a sua placa via USB e clicar no botão abaixo para iniciar a instalação.
+      </p>
+
+      <div class="install-button">
+        <esp-web-install-button manifest="https://raw.githubusercontent.com/joaodrj/arquivos/main/manifest.json">
+          <i slot="unsupported">
+            Seu navegador não suporta a Web Serial API. Utilize o Google Chrome ou o Microsoft Edge.
+          </i>
+        </esp-web-install-button>
+      </div>
+
+      <div class="videoWrapper">
+        <iframe
+          src="https://www.youtube.com/embed/p6mZdLqp7ak"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p>
+        Se você não encontrar seu dispositivo na lista, talvez precise instalar os drivers apropriados:
+        <a href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers">CP2102 Driver</a> ou 
+        <a href="https://github.com/nodemcu/nodemcu-devkit/tree/master/Drivers">CH341 Driver</a>.
+      </p>
+
+      <div class="footer">
+        <p>Baseado em ESP Web Tools – <a href="https://github.com/esphome/esp-web-tools">GitHub</a></p>
+        <p>Desenvolvido para facilitar a instalação do MicroPython na sua placa ESP32.</p>
+      </div>
+    </div>
+
+    <script>
+      // Espera o botão de instalação estar carregado e muda o texto para "Conectar"
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const installButton = document.querySelector('esp-web-install-button');
+        if (installButton) {
+          installButton.shadowRoot.querySelector('button').textContent = 'Conectar';
+        }
+      });
+    </script>
+  </body>
+</html>
