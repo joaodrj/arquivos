@@ -1,0 +1,12 @@
+{
+  "name": "MicroPython",
+  "version": "v1.20.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "https://github.com/joaodrj/arquivos/raw/main/ESP32_GENERIC-20230426-v1.20.0.bin", "offset": 4096 }
+      ]
+    }
+  ]
+}
